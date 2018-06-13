@@ -1,0 +1,31 @@
+server: 
+  port: 9527
+ 
+spring: 
+  application:
+    name: cloud-zuul-gateway
+ 
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka  
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true 
+
+zuul:
+  ignored-services: "*"
+#  ignored-services: cloud-dept-provider
+  routes:
+    mydept.serviceId: cloud-dept-provider
+    mydept.path: /mydept/**
+  prefix: /alibaba
+
+
+ 
+info:
+  app.name: alibaba-cloud-demo
+  company.name: www.alibaba.com
+  build.artifactId: cloud-zuul-gateway-9527
+  build.version: 1.0-SNAPSHOT
+
